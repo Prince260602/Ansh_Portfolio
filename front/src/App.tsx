@@ -32,7 +32,7 @@ const AppContent: React.FC = () => {
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />}>
-          <Route index element={<AdminDashboard />} />
+{/*           <Route index element={<AdminDashboard />} /> */}
         </Route>
       </Routes>
       <Toaster position="top-right" />
