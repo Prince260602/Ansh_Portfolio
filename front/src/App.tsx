@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Navbar";
@@ -43,9 +43,9 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <Router>
+      <BrowserRouter>
         <AppContent />
-      </Router>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
