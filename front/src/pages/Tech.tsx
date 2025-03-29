@@ -9,7 +9,7 @@ export default function Tech() {
   useEffect(() => {
     const fetchTechnologies = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/technologies');
+        const response = await fetch('https://ansh-portfolio.onrender.com/api/technologies');
         const data = await response.json();
         setTechnologies(data);
       } catch (error) {

@@ -9,7 +9,7 @@ export default function Portfolio() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/portfolios');
+        const response = await fetch('https://ansh-portfolio.onrender.com/api/portfolios');
         const data = await response.json();
         setProjects(data);
       } catch (error) {

@@ -16,7 +16,7 @@ export default function Contact() {
     setStatus('loading');
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact/send", {
+      const response = await fetch("https://ansh-portfolio.onrender.com/api/contact/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
