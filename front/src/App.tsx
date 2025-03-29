@@ -31,9 +31,16 @@ const AppContent: React.FC = () => {
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />}>
-{/*           <Route index element={<AdminDashboard />} /> */}
-        </Route>
+        <Route
+  path="/admin/dashboard/*"
+  element={<ProtectedRoute isAuthenticated={true} />}
+>
+  <Route index element={<AdminDashboard />} />
+</Route>
+
+{/*         <Route path="/admin/dashboard" element={<AdminDashboard />}>
+          <Route index element={<AdminDashboard />} /> 
+        </Route> */}
       </Routes>
       <Toaster position="top-right" />
     </div>
