@@ -11,7 +11,7 @@ import BlogDetail from "./pages/BlogDetail";
 import ProjectDetail from "./pages/ProjectDetail";
 import AdminLogin from "./pages/Admin/Login";
 import AdminDashboard from "./pages/Admin/Dashboard";
-// import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -31,8 +31,8 @@ const AppContent: React.FC = () => {
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />}>
-{/*           <Route index element={<AdminDashboard />} /> */}
+        <Route path="/admin/dashboard" element={<ProtectedRoute />}>
+          <Route index element={<AdminDashboard />} />
         </Route>
       </Routes>
       <Toaster position="top-right" />
