@@ -15,23 +15,10 @@ const ProtectedRoute: React.FC = () => {
   }, [navigate]);
 
   if (isAuthenticated === null) {
-    return null; // Prevent
+    return null; // Prevent rendering until auth check is complete
+  }
 
+  return isAuthenticated ? <Outlet /> : <Navigate to="/admin" replace />;
+};
 
-// import { useEffect } from "react";
-// import { Navigate, Outlet, useNavigate } from "react-router-dom";
-
-// const ProtectedRoute: React.FC = () => {
-//   const isAuthenticated = localStorage.getItem("adminToken");
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     if (!isAuthenticated) {
-//       navigate("/admin", { replace: true });
-//     }
-//   }, [isAuthenticated, navigate]);
-
-//   return isAuthenticated ? <Outlet /> : null;
-// };
-
-// export default ProtectedRoute;
+export default ProtectedRoute;
