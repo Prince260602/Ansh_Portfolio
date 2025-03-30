@@ -14,11 +14,12 @@ import AdminLogin from "./pages/Admin/Login";
 import AdminDashboard from "./pages/Admin/Dashboard";
 // import ProtectedRoute from "./components/ProtectedRoute";
 
-const AppContent: React.FC = () => {
-  const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith("/admin");
+const App: React.FC = () => {
+
 
   return (
+      <ThemeProvider>
+      <Router>
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       {!isAdminRoute && <Navbar />}
       <Routes>
@@ -37,15 +38,7 @@ const AppContent: React.FC = () => {
       </Routes>
       <Toaster position="top-right" />
     </div>
-  );
-};
-
-const App: React.FC = () => {
-  return (
-    <ThemeProvider>
-      <Router>
-        <AppContent />
-      </Router>
+         </Router>
     </ThemeProvider>
   );
 };
