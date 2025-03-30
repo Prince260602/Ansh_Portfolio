@@ -1,24 +1,17 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 const ProtectedRoute: React.FC = () => {
   const isAuthenticated = localStorage.getItem("adminToken");
+  const navigate = useNavigate();
 
-  if (!isAuthenticated) {
-    return <Navigate to="/admin" replace />;
-  }
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/admin", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
-  return <Outlet />;
+  return isAuthenticated ? <Outlet /> : null;
 };
 
 export default ProtectedRoute;
-
-
-// import { Navigate, Outlet } from "react-router-dom";
-
-// const ProtectedRoute: React.FC = () => {
-//   const isAuthenticated = localStorage.getItem("adminToken"); // Check if admin is logged in
-
-//   return isAuthenticated ? <Outlet /> : <Navigate to="/admin" replace />;
-// };
-
-// export default ProtectedRoute;
