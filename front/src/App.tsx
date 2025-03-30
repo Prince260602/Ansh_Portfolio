@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Navbar";
@@ -31,16 +31,9 @@ const AppContent: React.FC = () => {
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLogin />} />
-        <Route
-  path="/admin/dashboard/*"
-  element={<ProtectedRoute isAuthenticated={true} />}
->
-  <Route index element={<AdminDashboard />} />
-</Route>
-
-{/*         <Route path="/admin/dashboard" element={<AdminDashboard />}>
-          <Route index element={<AdminDashboard />} /> 
-        </Route> */}
+        <Route path="/admin/dashboard" element={<ProtectedRoute />}>
+          <Route index element={<AdminDashboard />} />
+        </Route>
       </Routes>
       <Toaster position="top-right" />
     </div>
@@ -50,9 +43,9 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <Router>
         <AppContent />
-      </BrowserRouter>
+      </Router>
     </ThemeProvider>
   );
 };
