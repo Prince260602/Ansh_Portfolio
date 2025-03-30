@@ -3,8 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 const ProtectedRoute: React.FC = () => {
   const isAuthenticated = localStorage.getItem("adminToken");
 
-  // Prevent unnecessary re-renders and infinite redirects
-  if (isAuthenticated === null) {
+  if (!isAuthenticated) {
     return <Navigate to="/admin" replace />;
   }
 
@@ -12,6 +11,7 @@ const ProtectedRoute: React.FC = () => {
 };
 
 export default ProtectedRoute;
+
 
 // import { Navigate, Outlet } from "react-router-dom";
 
