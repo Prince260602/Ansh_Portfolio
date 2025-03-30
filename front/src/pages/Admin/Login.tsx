@@ -11,31 +11,19 @@ const AdminLogin: React.FC = () => {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("adminToken");
     if (isAuthenticated) {
-      navigate("/admin/dashboard"); // Redirect if already logged in
+      navigate("/admin/dashboard", { replace: true }); // Redirect if already logged in
     }
   }, [navigate]);
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("https://ansh-portfolio.onrender.com/api/admin/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        localStorage.setItem("adminToken", data.token);
-        toast.success("Login successful!");
-        navigate("/admin/dashboard"); // Redirect to dashboard
-      } else {
-        toast.error("Invalid password. Try again.");
-      }
-    } catch (error) {
-      toast.error("Server error. Please try again.");
+    if (password === "123456") {
+      localStorage.setItem("adminToken", "true"); // Set token in localStorage
+      toast.success("Login successful!");
+      navigate("/admin/dashboard", { replace: true }); // Redirect to dashboard
+    } else {
+      toast.error("Invalid password. Try again.");
     }
   };
 
@@ -82,6 +70,7 @@ const AdminLogin: React.FC = () => {
 };
 
 export default AdminLogin;
+
 
 // import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
