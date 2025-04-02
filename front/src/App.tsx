@@ -11,6 +11,7 @@ import BlogDetail from "./pages/BlogDetail";
 import ProjectDetail from "./pages/ProjectDetail";
 import AdminLogin from "./pages/Admin/Login";
 import AdminDashboard from "./pages/Admin/Dashboard";
+import Chatbot from "./components/Chatbot";
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -32,6 +33,7 @@ const AppContent: React.FC = () => {
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
+      <Chatbot />
       <Toaster position="top-right" />
     </div>
   );

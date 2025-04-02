@@ -7,6 +7,7 @@ import technologyRoutes from "./routes/technologyRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import cors from "cors";
 import contactRoutes from "./routes/contactRoutes.js";
+import chatbotRoutes from "./routes/chatbotRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ app.use("/api/portfolios", portfolioRoutes);
 app.use("/api/technologies", technologyRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/chatbot", chatbotRoutes);
 
 
 const PORT = process.env.PORT || 5000;
